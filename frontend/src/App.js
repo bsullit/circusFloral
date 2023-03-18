@@ -1,9 +1,6 @@
 import data from './data';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-// const shmeta = {
-//   products: [{ name: 'dummy' }, { name: 'dummy2' }, { name: 'dummy3' }],
-// };
+import Homescreen from './screens/HomeScreen';
 
 function App() {
   return (
