@@ -1,5 +1,11 @@
+import { useParams } from 'react-router-dom';
+
 function ProductScreen() {
-  return <div>Product Screen</div>;
+  const params = useParams();
+  const { slug } = params;
+  console.log(params);
+
+  return <h1>{slug}</h1>;
 }
 
 export default ProductScreen;
