@@ -6,9 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.site-container {
+  min-height: 100vh;
+}
 
-.main {
-  padding: 1rem;
+main {
+  flex: 1;
 }
 
 .products {
