@@ -2,7 +2,8 @@ import { useEffect, useState, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
-//reducer for fetch to api/products
+
+//reducer for fetch to api/products to update state
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -41,26 +42,34 @@ function HomeScreen() {
     fetchData();
   }, []);
 
-  //need to fetch data from backend and call in homepage component
   return (
     <div>
       {' '}
       <h1>Featured Products</h1>
       <div className="products">
-        {products.map((product) => (
-          <div className="product" key={product.slug}>
-            <Link to={`/product/${product.slug}`}>
-              <img src={product.image} alt={product.name} />
-            </Link>
-            <div className="product-info">
+        {/* conditional rendering for page loading  */}
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          products.map((product) => (
+            <div className="product" key={product.slug}>
               <Link to={`/product/${product.slug}`}>
-                <p>{product.name}</p>
+                <img src={product.image} alt={product.name} />
               </Link>
-              <strong>{product.price}</strong>
-              <button>Add to cart </button>
+              <div className="product-info">
+                <Link to={`/product/${product.slug}`}>
+                  <p>{product.name}</p>
+                </Link>
+                <strong>{product.price}</strong>
+                <button>Add to cart </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
+
+        {}
       </div>
     </div>
   );
