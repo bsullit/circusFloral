@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 //reducer for fetch to api/products to update state
 const reducer = (state, action) => {
   switch (action.type) {
@@ -39,8 +41,8 @@ function HomeScreen() {
       try {
         const result = await axios.get('/api/products');
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      } catch (error) {
+        dispatch({ type: 'FETCH_FAIL', payload: error.message });
       }
     };
     fetchData();
@@ -53,13 +55,11 @@ function HomeScreen() {
       </Helmet>
       <h1>Featured Products</h1>
       <div className="products">
-        {/* conditional rendering for page loading  */}
         {loading ? (
-          <div>Loading...</div>
+          <LoadingBox />
         ) : error ? (
-          <div>{error}</div>
+          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          // calling product component
           <Row>
             {products.map((product) => (
               <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
