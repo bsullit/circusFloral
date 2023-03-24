@@ -5,7 +5,7 @@ import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
-
+import { Helmet } from 'react-helmet-async';
 //reducer for fetch to api/products to update state
 const reducer = (state, action) => {
   switch (action.type) {
@@ -48,6 +48,9 @@ function HomeScreen() {
 
   return (
     <div>
+      <Helmet>
+        <title>Circus Floral</title>
+      </Helmet>
       <h1>Featured Products</h1>
       <div className="products">
         {/* conditional rendering for page loading  */}
