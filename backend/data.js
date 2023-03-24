@@ -7,7 +7,9 @@ const data = {
       price: 56.78,
       image: '/images/rose_bouqet.jpeg',
       rating: 5,
+      numReviews: 11,
       description: 'for your special day',
+      countInStock: 7,
     },
     {
       name: 'Funeral',
@@ -16,7 +18,9 @@ const data = {
       price: 24.48,
       image: '/images/sunflowers.jpg',
       rating: 2,
+      numReviews: 9,
       description: 'Bummer!',
+      countInStock: 0,
     },
     {
       name: 'Quinceñera',
@@ -25,7 +29,9 @@ const data = {
       price: 46.78,
       image: '/images/pink_daisy.jpg',
       rating: 4,
+      numReviews: 6,
       description: 'go get em',
+      countInStock: 5,
     },
     {
       name: 'Bar mitzvah',
@@ -34,7 +40,9 @@ const data = {
       price: 36.78,
       image: '/images/mitz.jpg',
       rating: 5,
+      numReviews: 5,
       description: 'Big boy!',
+      countInStock: 5,
     },
   ],
 };
