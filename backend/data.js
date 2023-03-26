@@ -1,6 +1,7 @@
 const data = {
   products: [
     {
+      _id: '1',
       name: 'Wedding',
       slug: 'wedding',
       category: 'celebration',
@@ -12,6 +13,7 @@ const data = {
       countInStock: 7,
     },
     {
+      _id: '2',
       name: 'Funeral',
       slug: 'funeral',
       category: 'sympathy',
@@ -23,6 +25,7 @@ const data = {
       countInStock: 0,
     },
     {
+      _id: '3',
       name: 'Quinceñera',
       slug: 'quincenera',
       category: 'celebration',
@@ -34,6 +37,7 @@ const data = {
       countInStock: 5,
     },
     {
+      _id: '4',
       name: 'Bar mitzvah',
       slug: 'bar_mitzvah',
       category: 'celebration',
