@@ -7,6 +7,7 @@ import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
 
 dotenv.config();
+//console.log(process.env);
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -19,16 +20,17 @@ mongoose
 
 const app = express();
 
+//error handling middleware
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
-//error
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-});
 
 const port = process.env.PORT || 1337;
 app.listen(port, () => {
