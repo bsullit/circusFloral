@@ -25,6 +25,7 @@ function reducer(state, action) {
         : [...state.cart.cartItems, newItem];
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
+
     case 'CART_REMOVE_ITEM': {
       //filter by _id
       const cartItems = state.cart.cartItems.filter(
@@ -36,6 +37,9 @@ function reducer(state, action) {
 
     case 'USER_SIGNIN': {
       return { ...state, userInfo: action.payload };
+    }
+    case 'USER_SIGNOUT': {
+      return { ...state, userInfo: null };
     }
     default:
       return state;

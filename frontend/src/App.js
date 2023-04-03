@@ -5,7 +5,7 @@ import Homescreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/Dropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useContext } from 'react';
@@ -64,7 +64,9 @@ function App() {
                     </Link>
                   </NavDropdown>
                 ) : (
-                  <Link></Link>
+                  <Link className="nav-link" to="/signin">
+                    Sign In
+                  </Link>
                 )}
               </Nav>
             </Container>
@@ -73,10 +75,10 @@ function App() {
         <main>
           <Container>
             <Routes>
-              <Route path="/" element={<Homescreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
-              <Route path="/cart/signin" element={<SignInScreen />} />
+              <Route path="/signin" element={<SignInScreen />} />
+              <Route path="/" element={<Homescreen />} />
             </Routes>
           </Container>
         </main>
