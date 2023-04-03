@@ -54,7 +54,8 @@ function ProductScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart } = state;
 
-  const addToCartHandler = async () => {
+  const addToCartHandler = async (e) => {
+    e.preventDefault();
     //check if item id is in the cart already
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -116,7 +117,7 @@ function ProductScreen() {
             {product.countInStock > 0 && (
               <Listgroup.Item>
                 <div className="d-grid"></div>
-                <Button variant="primary" onClick={() => addToCartHandler()}>
+                <Button variant="primary" onClick={(e) => addToCartHandler(e)}>
                   Add to cart
                 </Button>
               </Listgroup.Item>
