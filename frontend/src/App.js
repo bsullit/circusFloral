@@ -13,14 +13,18 @@ import Badge from 'react-bootstrap/esm/Badge';
 import { Store } from './Store';
 import CartScreen from './screens/CartScreen';
 import SignInScreen from './screens/SignInScreen';
+import { useNavigate } from 'react-router-dom';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { cart, userInfo } = state;
+  const { cart, userInfo, shippingAddress } = state;
+  //const navigate = useNavigate();
 
   const signOutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem(userInfo);
+    localStorage.removeItem(shippingAddress);
   };
 
   return (
@@ -75,6 +79,7 @@ function App() {
         <main>
           <Container>
             <Routes>
+              <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/signin" element={<SignInScreen />} />
