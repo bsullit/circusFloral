@@ -3,7 +3,8 @@ import { useState, useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Store } from '../Store';
 import Form from 'react-bootstrap/Form';
-
+import Button from 'react-bootstrap/Button';
+import CheckoutSteps from '../components/CheckoutSteps';
 export default function ShippingAddressScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -17,11 +18,11 @@ export default function ShippingAddressScreen() {
   const [postal, setPostal] = useState(shippingAddress.postal || '');
   const [country, setCountry] = useState(shippingAddress.country || '');
 
-  //   useEffect(() => {
-  //     if (!userInfo) {
-  //       navigate('signin?redirect=/shipping');
-  //     }
-  //   }, [userInfo, navigate]);
+  useEffect(() => {
+    if (!userInfo) {
+      //navigate('signin?redirect=/shipping');
+    }
+  }, [userInfo, navigate]);
 
   const submitHandler = () => {};
   return (
@@ -29,7 +30,7 @@ export default function ShippingAddressScreen() {
       <Helmet>
         <title>Shipping Address</title>
       </Helmet>
-      {/* <CheckoutStepsComponent/> */}
+      <CheckoutSteps step1 step2 />
       <div>
         <h1>Shipping Address</h1>
         <Form onSubmit={submitHandler}>
@@ -80,6 +81,9 @@ export default function ShippingAddressScreen() {
               }}
             />
           </Form.Group>
+          <div>
+            <Button>Submit</Button>
+          </div>
         </Form>
       </div>
     </div>
