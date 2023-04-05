@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
@@ -16,7 +16,17 @@ export default function PaymentMethodScreen() {
     paymentMethod || 'Paypal'
   );
 
-  const submitHandler = (e) => {};
+  useEffect(() => {
+    if (!shippingAddress.address) {
+      navigate('/shipping');
+    }
+  }, [shippingAddress, navigate]);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });
+    localStorage.setItem('paymentMethod', paymentMethodName);
+    navigate('/placeorder');
+  };
 
   return (
     <div>

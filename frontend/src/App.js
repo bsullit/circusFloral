@@ -20,13 +20,14 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { cart, userInfo, shippingAddress } = state;
+  const { cart, userInfo, shippingAddress, paymentMethod } = state;
   //const navigate = useNavigate();
 
   const signOutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem(userInfo);
     localStorage.removeItem(shippingAddress);
+    localStorage.removeItem(paymentMethod);
   };
 
   return (
