@@ -16,6 +16,7 @@ import SignInScreen from './screens/SignInScreen';
 import { useNavigate } from 'react-router-dom';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -80,6 +81,7 @@ function App() {
         <main>
           <Container>
             <Routes>
+              <Route path="/payment" element={<PaymentMethodScreen />} />
               <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />

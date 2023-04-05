@@ -23,27 +23,6 @@ export default function SignUpScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
 
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
-  //   if (password !== confirmPassword) {
-  //     toast.error('Passwords do not match');
-  //     return;
-  //   }
-  //   try {
-  //     const { data } = await Axios.post(
-  //       '/api/users/signup',
-  //       {
-  //         name,
-  //         email,
-  //         password,
-  //       };
-  //       ctxDispatch({ type: 'USER_SIGNUP', payload: data })
-  //     );
-  //   } catch (err) {
-  //     toast.error(getError(err));
-  //   }
-  // };
-
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
