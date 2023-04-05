@@ -2,12 +2,12 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
 import { Store } from '../Store';
 import axios from 'axios';
-import Container from 'react-bootstrap/esm/Container';
 import { Helmet } from 'react-helmet-async';
 import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
 import Button from 'react-bootstrap/esm/Button';
 import { getError } from '../utils';
+import Container from 'react-bootstrap/Container';
 
 export default function SignUpScreen() {
   const navigate = useNavigate();
@@ -23,29 +23,53 @@ export default function SignUpScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
 
+  // const submitHandler = async (e) => {
+  //   e.preventDefault();
+  //   if (password !== confirmPassword) {
+  //     toast.error('Passwords do not match');
+  //     return;
+  //   }
+  //   try {
+  //     const { data } = await Axios.post(
+  //       '/api/users/signup',
+  //       {
+  //         name,
+  //         email,
+  //         password,
+  //       };
+  //       ctxDispatch({ type: 'USER_SIGNUP', payload: data })
+  //     );
+  //   } catch (err) {
+  //     toast.error(getError(err));
+  //   }
+  // };
+
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    if (password !== confirmPassword) {
+      toast.error('passwords do not match');
+      return;
+    }
     try {
-      const { data } = await axios.post(
-        'api/users/signup',
-        {
-          name,
-          email,
-          password,
-        },
-        ctxDispatch({ type: 'USER_SIGNIN', payload: data })
-      );
+      const { data } = await axios.post('/api/users/signup', {
+        name,
+        email,
+        password,
+      });
+      ctxDispatch({ type: 'USER_SIGNIN', payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
     } catch (err) {
       toast.error(getError(err));
     }
   };
 
-  // useEffect(()=>{
-
-  // })
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
   return (
-    <Container>
+    <Container className="small-container">
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
@@ -80,11 +104,12 @@ export default function SignUpScreen() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="confirmPassword">
           <Form.Label>Confirm password</Form.Label>
-          <Form.Control value={confirmPassword} />
-          onChange=
-          {(e) => {
-            setConfirmPassword(e.target.value);
-          }}
+          <Form.Control
+            value={confirmPassword}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
+          />
         </Form.Group>
         <div className="mb-3">
           <Button type="submit">Sign Up</Button>
