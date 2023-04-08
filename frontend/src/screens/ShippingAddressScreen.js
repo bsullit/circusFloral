@@ -82,7 +82,13 @@ export default function ShippingAddressScreen() {
             />
           </Form.Group>
           <div>
-            <Button>Submit</Button>
+            <Button
+              onClick={() => {
+                navigate('/payment');
+              }}
+            >
+              Submit
+            </Button>
           </div>
         </Form>
       </div>

@@ -16,11 +16,11 @@ export default function PaymentMethodScreen() {
     paymentMethod || 'Paypal'
   );
 
-  useEffect(() => {
-    if (!shippingAddress.address) {
-      navigate('/shipping');
-    }
-  }, [shippingAddress, navigate]);
+  // useEffect(() => {
+  //   if (!shippingAddress.address) {
+  //     navigate('/shipping');
+  //   }
+  // }, [shippingAddress, navigate]);
   const submitHandler = (e) => {
     e.preventDefault();
     ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });

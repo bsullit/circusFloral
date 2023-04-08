@@ -76,6 +76,7 @@ export default function SignUpScreen() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             value={password}
+            type="password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -85,6 +86,7 @@ export default function SignUpScreen() {
           <Form.Label>Confirm password</Form.Label>
           <Form.Control
             value={confirmPassword}
+            type="password"
             onChange={(e) => {
               setConfirmPassword(e.target.value);
             }}
