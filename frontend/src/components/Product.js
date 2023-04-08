@@ -16,9 +16,10 @@ function Product(props) {
   const addToCartHandler = async (item) => {
     //check against cart contents for duplicate items by id
     //if it exists add 1 to quantity otherwise set to 1
-    const existItem = cartItems.find((x) => x._id !== product._id);
+    const existItem = cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${item._id}`);
+
     if (data.countInStock < quantity) {
       window.alert('Sorry! Out of stock');
       return;
@@ -27,6 +28,7 @@ function Product(props) {
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
     });
+    console.log('cart', state.cart);
   };
 
   return (

@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import Listgroup from 'react-bootstrap/ListGroup';
 import Rating from '../components/Rating';
-import ListGroupItem from 'react-bootstrap/esm/ListGroupItem';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -60,7 +60,6 @@ function ProductScreen() {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
-    console.log(data);
 
     if (data.countInStock < quantity) {
       window.alert('Sorry! Out of stock');
