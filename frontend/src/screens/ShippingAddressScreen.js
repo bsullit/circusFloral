@@ -24,7 +24,14 @@ export default function ShippingAddressScreen() {
     }
   }, [userInfo, navigate]);
 
-  const submitHandler = () => {};
+  const submitHandler = (e) => {
+    e.prevent.default();
+    console.log(state.cart);
+    ctxDispatch({
+      type: 'SAVE_SHIPPING_ADDRESS',
+      payload: { ...state.cart, shippingAddress: state.cart.shippingAddress },
+    });
+  };
   return (
     <div>
       <Helmet>

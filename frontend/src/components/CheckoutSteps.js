@@ -2,7 +2,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 export default function CheckoutSteps(props) {
   return (
-    <Row>
+    <Row className="checkout-steps">
       {/* conditonal rendering of css classes for steps */}
       <Col className={props.step1 ? 'active' : ''}>Sign In</Col>
       <Col className={props.step2 ? 'active' : ''}>Shipping</Col>

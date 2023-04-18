@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { Store } from '../Store';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default function PaymentMethodScreen() {
   const navigate = useNavigate();
@@ -16,11 +17,11 @@ export default function PaymentMethodScreen() {
     paymentMethod || 'Paypal'
   );
 
-  // useEffect(() => {
-  //   if (!shippingAddress.address) {
-  //     navigate('/shipping');
-  //   }
-  // }, [shippingAddress, navigate]);
+  useEffect(() => {
+    // if (!shippingAddress.address) {
+    //   navigate('/shipping');
+    // }
+  }, [shippingAddress, navigate]);
   const submitHandler = (e) => {
     e.preventDefault();
     ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });
@@ -60,6 +61,11 @@ export default function PaymentMethodScreen() {
                 submitHandler(e.target.value);
               }}
             />
+            <div>
+              <Button className="mb-3" type="submit">
+                Continue
+              </Button>
+            </div>
           </div>
         </Form>
       </div>

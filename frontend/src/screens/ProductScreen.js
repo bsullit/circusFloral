@@ -56,7 +56,7 @@ function ProductScreen() {
 
   const addToCartHandler = async (e) => {
     e.preventDefault();
-    //check if item id is in the cart already
+    //check if item id is in the cart already or set quan to 1 if not
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
