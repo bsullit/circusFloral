@@ -7,7 +7,9 @@ import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+
 //reducer for fetch to api/products to update state
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':

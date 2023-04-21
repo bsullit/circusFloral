@@ -19,6 +19,7 @@ import SignUpScreen from './screens/SignUpScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import UserProfile from './screens/UserProfile';
+import kursor from 'kursor';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
